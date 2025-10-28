@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Aqua Life – Nature-Inspired Aquariums</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --main-color: #0b3d3b;
+      --accent-color: #2ec4b6;
+      --light-accent: #aef6da;
+      --bg-color: #f0fdfd;
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Open Sans', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: #222;
+      background-color: var(--bg-color);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(120deg, #026460, #117a65);
+      padding: 30px 0;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      font-family: var(--font-heading);
+      font-size: 2.8rem;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      margin-top: 15px;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 18px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 0;
+      bottom: -4px;
+      background: var(--light-accent);
+      transition: width 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--light-accent);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      background: url('./cute-fish-underwater.jpg') center/cover no-repeat;
+      height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+    }
+
+    .hero h2 {
+      position: relative;
+      color: #fff;
+      font-size: 2.6rem;
+      text-align: center;
+      font-family: var(--font-heading);
+      max-width: 90%;
+      line-height: 1.4;
+    }
+
+    .section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section h3 {
+      font-size: 2.2rem;
+      color: var(--main-color);
+      margin-bottom: 25px;
+      font-family: var(--font-heading);
+      text-align: center;
+      position: relative;
+    }
+
+    .section h3::after {
+      content: '';
+      width: 80px;
+      height: 3px;
+      background: var(--accent-color);
+      display: block;
+      margin: 10px auto;
+      border-radius: 2px;
+    }
+
+    .section p {
+      font-size: 1.1rem;
+      max-width: 800px;
+      text-align: center;
+      margin: 0 auto 40px;
+      color: #333;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 28px;
+      background: var(--accent-color);
+      color: #fff;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .button:hover {
+      background: #22a394;
+      transform: translateY(-2px);
+    }
+
+    /* Services Section */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 35px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(6px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card-content h4 {
+      color: var(--main-color);
+      margin-bottom: 10px;
+      font-family: var(--font-heading);
+    }
+
+    .card-content p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    /* Gallery */
+    #gallery {
+      background: linear-gradient(120deg, #f0fdfd, #c3f5e3);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Contact */
+    #contact {
+      background: linear-gradient(120deg, #0b3d3b, #117a65);
+      color: #fff;
+      text-align: center;
+      border-top-left-radius: 80px;
+      border-top-right-radius: 80px;
+      padding-top: 100px;
+    }
+
+    #contact a {
+      color: #aef6da;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #06312e;
+      color: #aef6da;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      .hero h2 {
+        font-size: 1.8rem;
+        padding: 0 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>The Aqua Life</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Crafting Tranquility — One Aquascape at a Time</h2>
+  </section>
+
+  <section id="about" class="section">
+    <h3>About The Aqua Life</h3>
+    <p>We design breathtaking aquatic environments that bring nature into your home or workspace. Each aquascape is a living artwork — balanced, peaceful, and full of life.</p>
+    <a href="#about-more" class="button">Learn More</a>
+  </section>
+
+  <section id="services" class="section">
+    <h3>Our Services</h3>
+    <div class="cards">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6" alt="Aquascape Design">
+        <div class="card-content">
+          <h4>Design & Installation</h4>
+          <p>Custom aquascapes designed for your style and environment — from concept to setup.</p>
+          <a href="#" class="button">Read More</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6" alt="Maintenance">
+        <div class="card-content">
+          <h4>Maintenance Plans</h4>
+          <p>We handle the health of your aquatic world — trimming, cleaning, and water balancing.</p>
+          <a href="#" class="button">Read More</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="./underwater-landscape.jpg" alt="Workshops">
+        <div class="card-content">
+          <h4>Workshops & Coaching</h4>
+          <p>Join our interactive sessions to learn aquascaping techniques from beginner to advanced.</p>
+          <a href="#" class="button">Read More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="section">
+    <h3>Gallery</h3>
+    <p>Immerse yourself in our aquatic masterpieces — every aquascape tells a story of balance and life.</p>
+    <div class="gallery-grid">
+      <img src="./delbert-pagayona-46v8clmNjY8-unsplash.jpg" alt="Gallery 1">
+      <img src="./dmytro-bukhantsov-IBrZ-TXYWY8-unsplash.jpg" alt="Gallery 2">
+      <img src="./large-glass-aquarium-with-fish-generative-ai.jpg" alt="Gallery 3">
+      <img src="./shaun-low-v8Un2Roo1Ak-unsplash.jpg" alt="Gallery 4">
+    </div>
+    <br><br>
+    <a href="#" class="button">View Full Gallery</a>
+  </section>
+
+  <section id="contact" class="section">
+    <h3>Contact Us</h3>
+    <p>Let’s design your dream aquascape! Reach out to us for consultations, installations, or workshops.</p>
+    <p>Email: <a href="mailto:info@theaqualife.in">info@theaqualife.in</a><br>
+    Phone: +91-XXX-XXX-XXXX</p>
+    <br>
+    <a href="#contact-form" class="button">Send a Message</a>
+  </section>
+
+  <footer>
+    &copy; 2025 The Aqua Life. Designed with 💚 for aquatic harmony.
+  </footer>
+
+</body>
+</html>
